@@ -1,8 +1,8 @@
-#ifndef SCENE_H
-#define SCENE_H
+#pragma once
 
-#endif //SCENE_H
 #include <easyx.h>
+#include "Plant.h"
+#include "Vec2.h"
 
 class Scene {
 private:
@@ -20,4 +20,5 @@ public:
 private:
     IMAGE m_BackgroundImg;
 
+    Plant* m_PlantTable[5][9];
 };
