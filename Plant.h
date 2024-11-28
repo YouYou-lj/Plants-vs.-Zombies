@@ -2,6 +2,7 @@
 
 #include <easyx.h>
 #include "Vec2.h"
+#include "Animation.h"
 
 class Plant {
 private:
@@ -23,7 +24,19 @@ public:
         m_Positon = pos;
     }
 
+    void setAnimation (Animation* anim) {
+        m_Animation = anim;
+    }
+
+    void startAnimation(bool isStartAnim = true) {
+        m_IsStartAnim = isStartAnim;
+    }
+
 private:
     IMAGE m_Image;
     Vec2 m_Positon;
+    Animation* m_Animation;
+    bool m_IsStartAnim = false;
+    int m_AnimIndex = 0;
+    float m_AnimCount = 0.0f;
 };
