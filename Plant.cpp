@@ -30,11 +30,26 @@ bool Plant::init() {
 }
 
 void Plant::drawTick() {
-    Tools::putimage_alpha(m_Positon.x, m_Positon.y, &m_Image);
+    if (m_IsStartAnim) {
+        Tools::putimage_alpha(m_Positon.x, m_Positon.y, m_Animation->index(m_AnimIndex));
+    } else {
+        Tools::putimage_alpha(m_Positon.x, m_Positon.y, &m_Image);
+    }
 }
 
 void Plant::eventTick(float delta) {
+    m_AnimCount += delta;
+    m_Animation->getInterval();
 
+    if (m_AnimCount >= 0.1f) {
+        m_AnimIndex++;
+
+        if (m_AnimIndex >= m_Animation->count()) {
+            m_AnimIndex = 0;
+        }
+
+        m_AnimCount -= 0.1f;
+    }
 }
 
 bool Plant::setImage(const char *filename) {
