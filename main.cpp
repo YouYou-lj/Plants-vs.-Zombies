@@ -19,7 +19,7 @@ int main() {
         if (float(end_time - begin_time) >= fps) {
             scene->drawTick();
             FlushBatchDraw();
-            scene->eventTick(float(end_time - begin_time));
+            scene->eventTick(float(end_time - begin_time) / CLOCKS_PER_SEC);
             begin_time = end_time;
         }
     }
