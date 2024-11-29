@@ -1,15 +1,17 @@
-# pragma once
+#pragma once
 
 #include <easyx.h>
 #include <vector>
 
-class Animation {
+class Animation{
 public:
-    static::Animation* create();
+    static Animation* create();
+
     void addImage(const char* filename);
+
     IMAGE* index(int i);
 
-    int count() const {
+    int count()const {
         return m_ImageArray.size();
     }
 
@@ -17,7 +19,7 @@ public:
         m_Interval = interval;
     }
 
-    float getInterval() {
+    float getInterval()const {
         return m_Interval;
     }
 
